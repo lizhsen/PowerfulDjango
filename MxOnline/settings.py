@@ -17,7 +17,7 @@ import xadmin
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
-sys.path.insert(0, os.path.join(BASE_DIR, "extra_apps"))
+sys.path.insert(1, os.path.join(BASE_DIR, "extra_apps"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,7 +33,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+AUTHENTICATION_BACKENDS = (
+    "users.views.CustomBackend",
+)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'organization',
     'xadmin',
     'crispy_forms',
+    'captcha',
 ]
 AUTH_USER_MODEL = "users.UserProfile"
 
@@ -133,3 +136,6 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
