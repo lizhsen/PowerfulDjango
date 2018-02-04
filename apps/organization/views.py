@@ -4,8 +4,10 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.views import View
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
 
 from .models import CourseOrg, CityDict
+from .forms import UserAskForm
 
 # Create your views here.
 
@@ -58,3 +60,24 @@ class OrgView(View):
             "hot_orgs": hot_orgs,
             "sort": sort,
         })
+
+
+class AddUserAskView(View):
+    """
+    用户添加咨询
+    """
+    def post(self, request):
+        user_ask_form = UserAskForm(request.POST)
+        print(user_ask_form.fields)
+        if user_ask_form.is_valid():
+            user_ask_form.save(commit=True)
+            return HttpResponse("{'status': 'success'}", content_type='application/json')
+        else:
+            return HttpResponse("{'status':'fail', 'msg': '添加错误'}", content_type='application/json')
+
+
+
+
+
+
+
