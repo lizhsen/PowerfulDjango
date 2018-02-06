@@ -24,7 +24,6 @@ class OrgView(View):
         hot_orgs = all_orgs.order_by("-click_nums")[:3]
         # 城市
         all_citys = CityDict.objects.all()
-
         # 取出筛选城市
         city_id = request.GET.get('city', '')
         if city_id:
@@ -33,7 +32,6 @@ class OrgView(View):
         category = request.GET.get('ct', '')
         if category:
             all_orgs = all_orgs.filter(category=category)
-
         sort = request.GET.get("sort", "")
         if sort:
             if sort == "students":
@@ -45,13 +43,9 @@ class OrgView(View):
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
             page = 1
-
         # Provide Paginator with the request object for complete querystring generation
-
         p = Paginator(all_orgs, per_page=3, request=request)
-
         orgs = p.page(page)
-
         org_nums = all_orgs.count()
         return render(request, "org-list.html", {
             "all_orgs": orgs,

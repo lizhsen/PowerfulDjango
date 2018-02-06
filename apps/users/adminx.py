@@ -2,13 +2,16 @@
 
 import xadmin
 
-from .models import EmailVerifyRecord, Banner
+from .models import EmailVerifyRecord, Banner, UserProfile
 
 
 class EmailVerifyRecordAdmin(object):
     list_display = ["code", "email", "send_type"]
     search_fields = ["code", "email", "send_type"]
     list_filter = ["code", "email", "send_type"]
+
+
+
 
 
 class BannerAdmin(object):
@@ -19,3 +22,4 @@ class BannerAdmin(object):
 
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 xadmin.site.register(Banner, BannerAdmin)
+
