@@ -177,18 +177,3 @@ class AddFavView(View):
                 return HttpResponse('{"status":"success", "msg": "已收藏"}', content_type='application/json')
             else:
                 return HttpResponse('{"status":"success", "msg": "收藏出错"}', content_type='application/json')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
