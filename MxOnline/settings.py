@@ -27,9 +27,9 @@ sys.path.insert(1, os.path.join(BASE_DIR, "extra_apps"))
 SECRET_KEY = 'b@34x*bw2-8e2ts7=!qv0mttri_4+#*h_acl5%%f4^*4d=jts1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -151,6 +151,7 @@ EMAIL_FROM = "lizhsen@sina.com"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 PAGINATION_SETTINGS = {
     'PAGE_RANGE_DISPLAYED': 10,

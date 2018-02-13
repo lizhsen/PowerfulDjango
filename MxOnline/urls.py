@@ -22,14 +22,15 @@ import xadmin
 from django.views.generic import TemplateView
 from django.views.static import serve
 
-from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetView, ModifyPwdView
-from organization.views import OrgView
+from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetView, ModifyPwdView, \
+    LogOutView, IndexView
 from MxOnline import settings
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name="index.html"), name="index"),
+    url(r'^$', IndexView.as_view(), name="index"),
     url(r'^login/$', LoginView.as_view(), name="login"),
+    url(r'^logout/$', LogOutView.as_view(), name="logout"),
     url(r'^register/$', RegisterView.as_view(), name="register"),
     url(r'^captcha/', include('captcha.urls')),
     url(r'^active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name='user_acitve'),
@@ -39,6 +40,13 @@ urlpatterns = [
     url(r'^org/', include('organization.urls', namespace='org')),
     # 配置上传文件的处理函数
     url(r'^media/(?P<path>.*)/$', serve, {"document_root": settings.MEDIA_ROOT}),
+    # 配置上传文件的处理函数
+    url(r'^static/(?P<path>.*)/$', serve, {"document_root": settings.STATIC_ROOT}),
     # 课程相关url
     url(r'^course/', include('courses.urls', namespace='course')),
+    # 用户相关
+    url(r'^users/', include('users.urls', namespace='users')),
 ]
+# 全局404页面配置
+handler404 = 'users.views.page_not_found'
+handler500 = 'users.views.page_error'

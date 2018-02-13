@@ -19,44 +19,39 @@
 <section class="headerwrap headerwrap2">
     <header>
 		<div  class="header2 header">
-                {% if request.user.is_authenticated %}
                     <div class="top">
                         <div class="wp">
                             <div class="fl"><p>服务电话：<b>13681858476</b></p></div>
                             <!--登录后跳转-->
-                                <div class="personal">
+                                {% if request.user.is_authenticated %}
+                        <div class="personal">
                                     <dl class="user fr">
-                                        <dd>bobby<img class="down fr" src="/static/images/top_down.png"/></dd>
-                                        <dt><img width="20" height="20" src="/static/media/image/2016/12/default_big_14.png"/></dt>
+                                        <dd>{{ request.user.username }}<img class="down fr" src="/static/images/top_down.png"/></dd>
+                                        <dt><img width="20" height="20" src="{{ MEDIA_URL }}{{ user.image }}"/></dt>
                                     </dl>
                                     <div class="userdetail">
                                         <dl>
-                                            <dt><img width="80" height="80" src="/static/media/image/2016/12/default_big_14.png"/></dt>
+                                            <dt><img width="80" height="80" src="{{ MEDIA_URL }}{{ user.image }}"/></dt>
                                             <dd>
-                                                <h2>django</h2>
-                                                <p>bobby</p>
+                                                <h2>{{ user.nick_name }}</h2>
+                                                <p>{{ user.username }}</p>
                                             </dd>
                                         </dl>
                                         <div class="btn">
-                                            <a class="personcenter fl" href="usercenter-info.html">进入个人中心</a>
-                                            <a class="fr" href="/logout/">退出</a>
+                                            <a class="personcenter fl" href="{% url 'users:user_info' %}">进入个人中心</a>
+                                            <a class="fr" href="{% url 'logout' %}">退出</a>
                                         </div>
                                     </div>
                                 </div>
-				            </div>
-			            </div>
-                 {% else %}
-                    <div class="top">
-                        <div class="wp">
-                            <div class="fl"><p>服务电话：<b>13681858476</b></p></div>
-                            <!--登录后跳转-->
-
-
-                                <a style="color:white" class="fr registerbtn" href="{% url 'register' %}">注册</a>
-                                <a style="color:white" class="fr loginbtn" href="/login/">登录</a>
+                                    <a href="{% url 'users:mymessage' %}">
+                            <div class="msg-num"><span id="MsgNum">{{ request.user.unread_nums }}</span></div>
+                        </a>
+                    {% else %}
+                        <a style="color:white" class="fr registerbtn" href="{% url 'register' %}">注册</a>
+                        <a style="color:white" class="fr loginbtn" href="{% url 'login' %}">登录</a>
+                    {% endif %}>
                             </div>
                      </div>
-            {% endif %}
 
 
     <div class="middle companyheader">
@@ -87,8 +82,8 @@
 <section>
 	<div class="wp">
 		<ul  class="crumbs">
-            <li><a href="index.html">首页</a>></li>
-			<li><a href="org-list.html">课程机构</a>></li>
+            <li><a href="{% url 'index' %}">首页</a>></li>
+			<li><a href="{% url 'org:org_list' %}">课程机构</a>></li>
 			<li>{% block page_path %}机构首页{% endblock %}</li>
 		</ul>
 	</div>
@@ -110,14 +105,6 @@
     </div>
 </section>
 <!--sidebar start-->
-<section>
-    <ul class="sidebar">
-        <li class="qq">
-            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2023525077&site=qq&menu=yes"></a>
-        </li>
-        <li class="totop"></li>
-    </ul>
-</section>
 <!--sidebar end-->
 <!--header start-->
 </div>

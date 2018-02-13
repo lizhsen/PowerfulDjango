@@ -10,7 +10,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class UserProfile(AbstractUser):
-    nickname = models.CharField(max_length=50, verbose_name=u'昵称', default='')
+    nick_name = models.CharField(max_length=50, verbose_name=u'昵称', default='')
     birthday = models.DateTimeField(verbose_name=u'生日', null=True, blank=True)
     gender = models.CharField(max_length=5, choices=(("male", u"男"), ("female", u"女")), default=u"女")
     address = models.CharField(max_length=100, default=u"用户地址")
@@ -25,11 +25,17 @@ class UserProfile(AbstractUser):
     def __unicode__(self):
         return self.username
 
+    def unread_nums(self):
+        # 获取用户未读消息数量
+        from operation.models import UserMessage
+        return UserMessage.objects.filter(user=self.id, has_read=False).count()
+
 
 class EmailVerifyRecord(models.Model):
     code = models.CharField(max_length=20, verbose_name=u'验证码')
     email = models.EmailField(max_length=50, verbose_name=u'邮箱')
-    send_type = models.CharField(verbose_name=u'验证码类型', choices=(("register", u"注册"), ("forget", u"找回密码")), max_length=10)
+    send_type = models.CharField(verbose_name=u'验证码类型', choices=(
+        ("register", u"注册"), ("forget", u"找回密码"), ("update", u"修改邮箱")), max_length=30)
     send_time = models.DateTimeField(default=datetime.now, verbose_name=u"发送时间")
 
     class Meta:
