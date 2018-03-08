@@ -38,7 +38,7 @@
                             </div>
                         </dt>
                         <dd>
-                            <a href="/diary/hk_detail/10/">
+                            <a href="{% url 'org:teacher_detail' teacher.id %}">
                                 <h1>{{ teacher.name }}<span class="key picbig">金牌讲师</span></h1>
                             </a>
                             <ul class="cont">
@@ -55,18 +55,18 @@
                 <div class="left layout">
 				<div class="head">
 					<ul class="tab_header">
-						<li class="active"><a href="/diary/hk_detail/10/">全部课程</a> </li>
+						<li class="active"><a href={% url 'course:course_list' %}>全部课程</a> </li>
 					</ul>
 				</div>
                     <div class="companycenter">
                         <div class="group_list brief">
                             {% for course in teacher_courses %}
                             <div class="module1_5 box">
-                                <a href="course-detail.html">
+                                <a href="{% url 'course:course_detail' course.id %}">
                                     <img width="214" height="190" class="scrollLoading" src="{{ MEDIA_URL }}{{ course.image }}"/>
                                 </a>
                                 <div class="des">
-                                    <a href="course-detail.html"><h2>{{ course.name }}</h2></a>
+                                    <a href="{% url 'course:course_detail' course.id %}"><h2>{{ course.name }}</h2></a>
                                     <span class="fl">时长：<i class="key">{{ course.learn_times }}</i></span>
                                     <span class="fr">学习人数：{{ course.students }}</span>
                                 </div>
@@ -100,7 +100,7 @@
                         <img width="150" height="80" src="{{ MEDIA_URL }}{{ teacher.org.image }}"/>
                     </a>
                 </div>
-                <a href="org-detail-homepage.html{% url 'org:org_home' teacher.org.id %}">
+                <a href="{% url 'org:org_home' teacher.org.id %}">
                     <h2 class="center">{{ teacher.org.name }}</h2>
                 </a>
                 <p class="center tell">地址：{{ teacher.org.address }}</p>

@@ -1547,7 +1547,7 @@ textarea:focus {
 .unslider-arrow4.prev,
 .unslider-arrow5.prev {
     left: 0;
-    background: url(../images/slide_l.png) no-repeat center center;
+    background: url(/static/images/slide_l.png) no-repeat center center;
 }
 
 .unslider-arrow.prev:hover,
@@ -1555,7 +1555,7 @@ textarea:focus {
 .unslider-arrow3.prev:hover,
 .unslider-arrow4.prev:hover,
 .unslider-arrow5.prev:hover {
-    background: url(../images/slide_l_1.png) no-repeat center center;
+    background: url(/static/images/slide_l_1.png) no-repeat center center;
 }
 
 .unslider-arrow.next,
@@ -1564,7 +1564,7 @@ textarea:focus {
 .unslider-arrow4.next,
 .unslider-arrow5.next {
     right: 0;
-    background: url(../images/slide_r.png) no-repeat center center;
+    background: url(/static/images/slide_r.png) no-repeat center center;
 }
 
 .unslider-arrow.next:hover,
@@ -1572,7 +1572,7 @@ textarea:focus {
 .unslider-arrow3.next:hover,
 .unslider-arrow4.next:hover,
 .unslider-arrow5.next:hover {
-    background: url(../images/slide_r_1.png) no-repeat center center;
+    background: url(/static/images/slide_r_1.png) no-repeat center center;
 }
 
 .imgslide .dots,
