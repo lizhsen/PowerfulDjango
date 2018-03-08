@@ -44,7 +44,7 @@ class RegisterView(View):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
             email = request.POST.get("email", "")
-            if UserProfile().objects.filter(email=email):
+            if UserProfile.objects.filter(email=email):
                 return render(request, "login.html", {"register_form": register_form, "msg": "用户已存在"})
             pass_word = request.POST.get("password", "")
             user_profile = UserProfile()
