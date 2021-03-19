@@ -24,7 +24,7 @@ idna==2.6
 ipaddress==1.0.19
 iso8601==0.1.12
 itsdangerous==0.24
-jinja2==2.10
+jinja2==2.11.3
 list-print==1.0.1
 lockfile==0.12.2
 markupsafe==1.0
