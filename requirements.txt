@@ -57,7 +57,7 @@ PySocks==1.6.7
 python-daemon==2.1.2
 python-dateutil==2.6.1
 pytz==2017.3
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.4
 rfc3986==1.1.0
 rpc==0.1.3
