@@ -44,7 +44,7 @@ oslo.serialization==2.22.0
 oslo.utils==3.33.0
 paramiko==2.4.0
 pbr==3.1.1
-Pillow==5.0.0
+Pillow==9.0.0
 protobuf==3.5.1
 psutil==5.4.3
 py==1.5.2
