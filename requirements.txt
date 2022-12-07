@@ -3,7 +3,7 @@ Babel==2.5.1
 base==1.0.4
 bcrypt==3.1.4
 biplist==1.0.3
-certifi==2017.11.5
+certifi==2022.12.7
 cffi==1.11.4
 chardet==3.0.4
 click==6.7
